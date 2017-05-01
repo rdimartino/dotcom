@@ -1,0 +1,133 @@
+/*Flip mechanisms*/
+.flip-container {
+  margin: 0;
+  padding: 15px;
+}
+
+.flip-container.hover .flipper {
+		transform: rotateY(180deg);
+}
+
+.flip-container.post-hover .flipper {
+  transform: rotateY(360deg);
+}
+
+.flipper, .front, .back {
+	width: 150px;
+	height: 150px;
+}
+
+.flipper.big,
+.flipper.big .front {
+  width: 330px;
+  height: 330px;
+  backface-visibility: visible;
+  font-size: 260px;
+}
+
+.flipper {
+	transition: transform 0.5s linear;
+	transform-style: preserve-3d;
+	position: relative;
+}
+
+.front, .back {
+	backface-visibility: hidden;
+	position: absolute;
+	top: 0;
+	left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #9F31AE;
+}
+
+.front {
+	z-index: 2;
+	transform: rotateY(0deg);
+}
+
+.back {
+	transform: rotateY(180deg);
+}
+
+body {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 75px;
+  color: white;
+  padding: 30px;
+}
+
+.material-icons {
+  font-size: 75px;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:link, a:hover, a:visited, a:active {
+  color: white;
+}
+
+a, img {
+  margin: 0;
+  padding: 0;
+  display: block;
+}
+
+img {
+  max-width: 75px;
+  max-height: 75px;
+  width: auto;
+  height: auto;
+}
+
+.container {
+  margin: auto;
+  display: flex;
+  flex-flow: row wrap;
+  padding: 0;
+  perspective: 1000px;
+}
+
+.wrapper {
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+
+.notransition {
+  transition: none !important;
+}
+
+@media (max-width: 799px) {
+  .container {
+    width: 360px;
+    perspective: 540px;
+  }
+  .wrapper {
+    flex-direction: row;
+  }
+}
+@media (min-width: 800px) and (max-width: 999px) {
+  .container {
+    width: 540px;
+    perspective: 720px;
+  }
+  .wrapper {
+    flex-direction: row;
+  }
+  .wrapper:nth-of-type(6) {
+    flex-direction: column;
+  }
+}
+@media (min-width: 1000px) {
+  .container {
+    width: 720px;
+    perspective: 1080px;
+  }
+  .wrapper {
+    flex-direction: column;
+  }
+}
