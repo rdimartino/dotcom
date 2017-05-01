@@ -13,16 +13,16 @@
 }
 
 .flipper, .front, .back {
-	width: 150px;
-	height: 150px;
+	width: 120px;
+	height: 120px;
 }
 
 .flipper.big,
 .flipper.big .front {
-  width: 330px;
-  height: 330px;
+  width: 270px;
+  height: 270px;
   backface-visibility: visible;
-  font-size: 260px;
+  font-size: 200px;
 }
 
 .flipper {
@@ -53,13 +53,15 @@
 
 body {
   font-family: 'Open Sans', sans-serif;
-  font-size: 75px;
   color: white;
   padding: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .material-icons {
-  font-size: 75px;
+  font-size: 60px;
 }
 
 a {
@@ -77,14 +79,14 @@ a, img {
 }
 
 img {
-  max-width: 75px;
-  max-height: 75px;
+  max-width: 60px;
+  max-height: 60px;
   width: auto;
   height: auto;
 }
 
 .container {
-  margin: auto;
+  /*margin: auto;*/
   display: flex;
   flex-flow: row wrap;
   padding: 0;
@@ -101,18 +103,21 @@ img {
   transition: none !important;
 }
 
-@media (max-width: 799px) {
+@media (max-width: 599px) {
   .container {
-    width: 360px;
+    width: 300px;
     perspective: 540px;
   }
   .wrapper {
     flex-direction: row;
   }
+  .monoglyph {
+    order: -1;
+  }
 }
-@media (min-width: 800px) and (max-width: 999px) {
+@media (min-width: 600px) and (max-width: 799px) {
   .container {
-    width: 540px;
+    width: 450px;
     perspective: 720px;
   }
   .wrapper {
@@ -122,9 +127,9 @@ img {
     flex-direction: column;
   }
 }
-@media (min-width: 1000px) {
+@media (min-width: 800px) {
   .container {
-    width: 720px;
+    width: 600px;
     perspective: 1080px;
   }
   .wrapper {
