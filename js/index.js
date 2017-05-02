@@ -7,7 +7,7 @@ document.onmousemove = function(e) {
 
 var myCss = Array.prototype.slice
   .call(document.styleSheets)
-  .find(function(e) {return e.title=="local-css";});
+  .find(function(e) {return e.href=="http://rdimartino.com/css/style.css";});
 var hoverRule = Array.prototype.slice
   .call(myCss.cssRules)
   .find(function(e) {return e.selectorText==".flip-container:hover .flipper";});
