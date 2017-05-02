@@ -5,6 +5,14 @@ document.onmousemove = function(e) {
   cursorY = e.clientY;
 };
 
+var myCss = Array.prototype.slice
+  .call(document.styleSheets)
+  .find(function(e) {return e.title=="local-css";});
+var hoverRule = Array.prototype.slice
+  .call(myCss.cssRules)
+  .find(function(e) {return e.selectorText==".flip-container:hover .flipper";});
+hoverRule.selectorText = ".flip-container.hover .flipper";
+
 HTMLElement.prototype.mouseOn = function() {
   rect = this.getBoundingClientRect();
   return (
@@ -15,14 +23,31 @@ HTMLElement.prototype.mouseOn = function() {
   );
 };
 
-document.querySelectorAll(".flip-container").forEach(function(el, idx) {
-  el.addEventListener("mouseover", flip, { once: true });
-  setTimeout(function() {
-    if (!el.mouseOn()) {
-      flip.call(el);
+Array.prototype.slice
+  .call(document.querySelectorAll(".flip-container"))
+  .sort(function(a,b) {
+    rect1 = a.getBoundingClientRect();
+    rect2 = b.getBoundingClientRect();
+    if (rect1.top < rect2.top) {
+      return -1;
+    } else if (rect1.top > rect2.top) {
+      return 1;
+    } else if (rect1.left < rect2.left) {
+      return -1;
+    } else if (rect1.left > rect2.left) {
+      return 1;
+    } else {
+      return 0;
     }
-  }, idx * 150);
-});
+  })
+  .forEach(function(el, idx) {
+    el.addEventListener("mouseover", flip, { once: true });
+    setTimeout(function() {
+      if (!el.mouseOn()) {
+        flip.call(el);
+      }
+    }, idx * 150);
+  });
 
 function flip() {
   this.classList.add("hover");

@@ -4,7 +4,9 @@
   padding: 15px;
 }
 
-.flip-container.hover .flipper {
+/*.flip-container:hover .flipper,*/
+/*.flip-container:active .flipper,*/
+.flip-container:hover .flipper {
 		transform: rotateY(180deg);
 }
 
@@ -26,7 +28,7 @@
 }
 
 .flipper {
-	transition: transform 0.5s linear;
+	transition: transform 0.3s linear;
 	transform-style: preserve-3d;
 	position: relative;
 }
@@ -106,7 +108,8 @@ img {
 @media (max-width: 599px) {
   .container {
     width: 300px;
-    perspective: 540px;
+    height: 900px;
+    perspective: 1080px;
   }
   .wrapper {
     flex-direction: row;
@@ -118,21 +121,35 @@ img {
 @media (min-width: 600px) and (max-width: 799px) {
   .container {
     width: 450px;
+    height: 600px;
     perspective: 720px;
+    flex-flow: column wrap;
   }
   .wrapper {
+    flex-direction: column;
+  }
+  .wrapper:nth-of-type(2n) {
     flex-direction: row;
   }
-  .wrapper:nth-of-type(6) {
-    flex-direction: column;
+  .wrapper:nth-of-type(2),
+  .monoglyph {
+    order: 1;
+  }
+  .wrapper:nth-of-type(4) {
+    order: 2;
   }
 }
 @media (min-width: 800px) {
   .container {
     width: 600px;
-    perspective: 1080px;
+    height: 450px;
+    perspective: 540px;
   }
   .wrapper {
+    flex-direction: row;
+  }
+  .wrapper:nth-child(3),
+  .wrapper:nth-child(4) {
     flex-direction: column;
   }
 }
