@@ -1,5 +1,5 @@
 # rdimartino.com
 My personal website
 
-# TODO
+## TODO
 * ~~Sign commits~~
